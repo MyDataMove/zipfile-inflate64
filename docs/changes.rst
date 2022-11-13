@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 `Unreleased`_
 =============
 
+* Improve document
+* Fix release CI to publish source package
+
 v0.1
 ====
 
@@ -15,4 +18,3 @@ v0.1
 .. History links
 .. _Unreleased: https://codeberg.org/miurahr/zipfile-inflate64/compare/v0.2...HEAD
 .. _v0.2: https://codeberg.org/miurahr/zipfile-inflate64/compare/v0.1...v0.2
-
