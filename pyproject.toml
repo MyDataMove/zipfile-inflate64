@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools_scm]
 local_scheme = "no-local-version"
-write_to = "zipfile_inflate64/version.py"
+write_to = "src/zipfile_inflate64/version.py"
 write_to_template = """
 __version__ = '{version}'
 """
@@ -45,6 +45,10 @@ dependencies = [
 ]
 keywords= ['zip', 'zipfile', 'deflate', 'deflate64', 'inflate64']
 dynamic = ["version"]
+
+[tool.setuptools]
+packages = ["zipfile_inflate64"]
+package-dir = {"" = "src"}
 
 [project.urls]
 Homepage = "https://zipfile-inflate64.readthedocs.io/"
