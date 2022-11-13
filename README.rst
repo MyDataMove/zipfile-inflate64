@@ -1,13 +1,19 @@
-# zipfile-inflate64
+=================
+zipfile-inflate64
+=================
 
 Extract Enhanced Deflate ZIP archives with Python's `zipfile` API.
 
-## Installation
+Installation
+============
+
 ```bash
 pip install zipfile-inflate64
 ```
 
-## Usage
+Usage
+=====
+
 Anywhere in a Python codebase:
 ```python
 import zipfile_inflate64  # This has the side effect of patching the zipfile module to support Enhanced Deflate
@@ -21,15 +27,20 @@ zipfile.ZipFile(...)
 ...
 ```
 
-## Design Rationale
+Design Rationale
+================
 
-### The Problem
+The Problem
+-----------
+
 Recent versions of Microsoft Windows Explorer
 [use Deflate64 compression when creating ZIP files larger than 2GB](https://github.com/dotnet/runtime/issues/17802#issuecomment-231808916).
 With the ubiquity of Windows and the ease of using "Sent to compressed folder", a majority of newly-created large
 ZIP files use Deflate64 compression.
 
-### Solution
+Solution
+--------
+
 Python package [inflate64](https://pypi.org/project/inflate64/) provide compression(deflate) and decompression(inflate)
 by Enhanced Deflate, aka Deflate64, procedure.
 
@@ -41,20 +52,18 @@ can overcome some of these problems, and the promise of a drop-in, API-compatibl
 outweighed the engineering benefits of basing a solution off a more naturally extensible third-party ZIP manipulation
 package.
 
-### History
+History
+-------
 
 Zipfile-deflate64 realize extraction of zipfile compressed with DEFLATE64(tm) algorithm by binding with infback9
 extension in zlib.
 
 zipfile-inflate64 is a fork that use inflate64 python package to realize compress and decompress of archives.
 
-## Copyright
-
-- zipfile-deflate64 is authored by Kitware, Inc.
-- zipfile-inflate64 is authored by Hiroshi Miura.
-
-## LICENSE
+Copyright & License
+===================
 
 zipfile-inflate64 is distributed under GNU General Public License Version 3.0 or (in your choice) later.
 
 zipfile-deflate64 is distributed under Apache-2.0 license.
+which authored by Kitware, Inc.
