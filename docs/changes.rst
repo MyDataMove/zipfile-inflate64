@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.
 v0.1
 ====
 
-* First publish
+* First public release
 
 .. History links
 .. _Unreleased: https://codeberg.org/miurahr/zipfile-inflate64/compare/v0.2...HEAD
