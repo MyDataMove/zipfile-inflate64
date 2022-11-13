@@ -10,6 +10,49 @@ __version__ = \"{version}\"
 """
 tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
 
+[project]
+name = "zipfile-inflate64"
+requires-python = ">=3.7"
+description = "Extract Enhanced Deflate ZIP archives with Python's zipfile API."
+readme = "README.rst"
+license = {text = "LGPL-2.1-or-later"}
+authors = [
+    {name = "Hiroshi Miura", email = "miurahr@linux.com"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Archiving",
+    "Topic :: System :: Archiving :: Compression",
+ ]
+dependencies = [
+      'inflate64>=0.3.1;python_version>"3.6"',
+]
+keywords= ['zip', 'zipfile', 'deflate', 'deflate64', 'inflate64']
+dynamic = ["version", "entry-points"]
+
+[project.urls]
+Homepage = "https://zipfile-inflate64.readthedocs.io/"
+Documentation = "https://zipfile-inflate64.readthedocs.io/en/stable/"
+"Bug Tracker" = "https://codeberg.org/miurahr/zipfile-inflate64/issues"
+Source = "https://codeberg.org/miurahr/zipfile-inflate64"
+Changelog = "https://zipfile-inflate64.readthedocs.io/en/latest/changelog.html"
+
 [tool.black]
 line-length = 100
 skip-string-normalization = true
