@@ -7,6 +7,9 @@ All notable changes to this project will be documented in this file.
 `Unreleased`_
 =============
 
+v0.2_
+=====
+
 * Improve document
 * Fix release CI to publish source package
 
