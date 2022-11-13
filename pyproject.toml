@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 local_scheme = "no-local-version"
 write_to = "zipfile_inflate64/version.py"
 write_to_template = """
-__version__ = \"{version}\"
+__version__ = '{version}'
 """
 tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
 
@@ -44,7 +44,7 @@ dependencies = [
       'inflate64>=0.3.1;python_version>"3.6"',
 ]
 keywords= ['zip', 'zipfile', 'deflate', 'deflate64', 'inflate64']
-dynamic = ["version", "entry-points"]
+dynamic = ["version"]
 
 [project.urls]
 Homepage = "https://zipfile-inflate64.readthedocs.io/"
