@@ -1,3 +1,96 @@
 [build-system]
-requires = ["setuptools >= 42", "wheel"]
+requires = ["setuptools >= 63", "wheel", "setuptools-scm[toml]>=7.0.5"]
 build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+local_scheme = "no-local-version"
+write_to = "zipfile_inflate64/version.py"
+write_to_template = """
+__version__ = \"{version}\"
+"""
+tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
+
+[tool.black]
+line-length = 100
+skip-string-normalization = true
+target-version = ["py310"]
+exclude='\.eggs|\.git|\.mypy_cache|\.tox|\.venv|_build|buck-out|build|dist'
+
+[tool.isort]
+profile = "black"
+line_length = 100
+# Sort by name, don't cluster "from" vs "import"
+force_sort_within_sections = true
+# Combines "as" imports on the same line
+combine_as_imports = true
+
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true
+show_error_codes = true
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+# Build in an environment which respects PEP 518
+isolated_build = true
+envlist =
+    lint,
+    type,
+    test,
+
+[testenv:lint]
+skipsdist = true
+skip_install = true
+deps =
+    flake8
+    flake8-black
+    flake8-bugbear
+    flake8-docstrings
+    flake8-isort
+    flake8-quotes
+    pep8-naming
+commands =
+    flake8 {posargs:.}
+
+[testenv:type]
+skipsdist = true
+skip_install = true
+deps =
+    mypy
+commands =
+    mypy {posargs:.}
+
+[testenv:format]
+skipsdist = true
+skip_install = true
+deps =
+    black
+    isort
+commands =
+    isort {posargs:.}
+    black {posargs:.}
+
+[testenv:test]
+deps =
+    pytest
+commands =
+    pytest {posargs}
+
+[testenv:release]
+skipsdist = true
+skip_install = true
+passenv =
+    TWINE_USERNAME
+    TWINE_PASSWORD
+    TWINE_NON_INTERACTIVE
+deps =
+    twine
+commands =
+    # Don't build any packages, that's done in a more particular way by CI
+    twine check dist/*
+    twine upload --skip-existing dist/*
+
+[pytest]
+addopts = --strict-markers --showlocals --verbose
+"""
