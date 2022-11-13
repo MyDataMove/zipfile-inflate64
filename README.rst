@@ -2,30 +2,34 @@
 zipfile-inflate64
 =================
 
-Extract Enhanced Deflate ZIP archives with Python's `zipfile` API.
+Extract Enhanced Deflate ZIP archives with Python's ``zipfile`` API.
 
 Installation
 ============
 
-```bash
-pip install zipfile-inflate64
-```
+.. code-block:: python
+
+   pip install zipfile-inflate64
+
 
 Usage
 =====
 
 Anywhere in a Python codebase:
-```python
-import zipfile_inflate64  # This has the side effect of patching the zipfile module to support Enhanced Deflate
-```
+
+.. code-block:: python
+
+   import zipfile_inflate64  # This has the side effect of patching the zipfile module to support Enhanced Deflate
+
 
 Alternatively, `zipfile_inflate64` re-exports the `zipfile` API, as a convenience:
-```python
-import zipfile_inflate64 as zipfile
 
-zipfile.ZipFile(...)
-...
-```
+.. code-block:: python
+
+   import zipfile_inflate64 as zipfile
+
+   zipfile.ZipFile(...)
+
 
 Design Rationale
 ================

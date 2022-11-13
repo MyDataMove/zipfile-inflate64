@@ -57,6 +57,25 @@ Documentation = "https://zipfile-inflate64.readthedocs.io/en/stable/"
 Source = "https://codeberg.org/miurahr/zipfile-inflate64"
 Changelog = "https://zipfile-inflate64.readthedocs.io/en/latest/changelog.html"
 
+[project.optional-dependencies]
+docs = [
+      "sphinx>=5.0",
+      "docutils",
+]
+check = [
+      "mypy>=0.940",
+      "mypy_extensions>=0.4.1",
+      "check-manifest",
+      "flake8",
+      "flake8-black",
+      "flake8-deprecated",
+      "flake8-isort",
+      "isort>=5.0.3",
+      "pygments",
+      "readme-renderer",
+      "twine",
+]
+
 [tool.black]
 line-length = 100
 skip-string-normalization = true
@@ -82,23 +101,19 @@ legacy_tox_ini = """
 # Build in an environment which respects PEP 518
 isolated_build = true
 envlist =
-    lint,
+    check,
     type,
     test,
+    docs,
 
-[testenv:lint]
-skipsdist = true
-skip_install = true
-deps =
-    flake8
-    flake8-black
-    flake8-bugbear
-    flake8-docstrings
-    flake8-isort
-    flake8-quotes
-    pep8-naming
+[testenv:check]
+extras = check
+ignore_errors=true
 commands =
-    flake8 {posargs:.}
+    flake8 src tests
+    python -m build --sdist
+    twine check dist/*
+    check-manifest {toxinidir}
 
 [testenv:type]
 skipsdist = true
@@ -106,7 +121,7 @@ skip_install = true
 deps =
     mypy
 commands =
-    mypy {posargs:.}
+    mypy src
 
 [testenv:format]
 skipsdist = true
@@ -123,6 +138,11 @@ deps =
     pytest
 commands =
     pytest {posargs}
+
+[testenv:docs]
+extras = docs
+commands =
+    sphinx-build {posargs:-E} -b html docs build/docs
 
 [testenv:release]
 skipsdist = true
