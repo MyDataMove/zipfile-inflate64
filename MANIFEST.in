@@ -3,9 +3,11 @@ exclude *
 prune *
 
 # Re-include files which setuptools auto-includes
-include MANIFEST.in pyproject.toml README.md setup.py
+include MANIFEST.in pyproject.toml README.rst
 graft *.egg-info
 
 # Include the module
 graft zipfile_inflate64
 
+# Include the docs
+graft docs

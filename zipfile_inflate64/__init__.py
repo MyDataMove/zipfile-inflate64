@@ -8,3 +8,7 @@ from zipfile import *  # noqa: F401, F403
 
 # ZIP_DEFLATED64 is not a part of zipfile.__all__
 from zipfile import ZIP_DEFLATED64  # type: ignore[attr-defined] # noqa: F401
+
+from zipfile_inflate64.version import __version__
+
+__copyright__ = "Copyright (C) 2022 Hiroshi Miura"
