@@ -2,6 +2,14 @@
 zipfile-inflate64
 =================
 
+.. image:: https://dev.azure.com/miurahr/CodeBerg/_apis/build/status/CodeBerg-zipfile-inflate64-CI?branchName=releases
+    :target: https://dev.azure.com/miurahr/CodeBerg
+    :alt: Test Status
+
+.. image:: https://readthedocs.org/projects/zipfile-inflate64/badge/?version=latest
+    :target: https://zipfile-inflate64.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 Extract Enhanced Deflate ZIP archives with Python's ``zipfile`` API.
 
 Installation
