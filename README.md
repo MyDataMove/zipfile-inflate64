@@ -1,5 +1,4 @@
-# zipfile-deflate64
-[![PyPI](https://img.shields.io/pypi/v/zipfile-deflate64)](https://pypi.org/project/zipfile-deflate64/)
+# zipfile-inflate64
 
 Extract Enhanced Deflate ZIP archives with Python's `zipfile` API.
 
