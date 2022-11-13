@@ -3,7 +3,7 @@ zipfile-inflate64
 =================
 
 .. image:: https://dev.azure.com/miurahr/CodeBerg/_apis/build/status/CodeBerg-zipfile-inflate64-CI?branchName=releases
-    :target: https://dev.azure.com/miurahr/CodeBerg
+    :target: https://dev.azure.com/miurahr/CodeBerg/_build?definitionId=35
     :alt: Test Status
 
 .. image:: https://readthedocs.org/projects/zipfile-inflate64/badge/?version=latest
