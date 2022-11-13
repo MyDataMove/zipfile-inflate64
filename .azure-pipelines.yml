@@ -1,0 +1,61 @@
+trigger:
+  branches:
+    include:
+      - releases/*
+      - refs/tags/v*
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+strategy:
+  matrix:
+    Python38:
+      python.version: '3.8'
+      TOXENV: py38
+    Python39:
+      python.version: '3.9'
+      TOXENV: py39
+    Python310:
+      python.version: '3.10'
+      TOXENV: py310
+
+jobs:
+- job: Linux
+  steps:
+  - task: UsePythonVersion@0
+    displayName: 'Use Python $(python.version)'
+    inputs:
+      versionSpec: '$(Parameters.versionSpec)'
+      disableDownloadFromRegistry: true
+  - bash: |
+     python -m pip install --upgrade pip setuptools setuptools_scm[toml] tox importlib_metadata
+     python -m tox
+    displayName: 'Install dependencies and run tox'
+
+- job: Publish
+  dependsOn: Linux
+  steps:
+  - task: UsePythonVersion@0
+    displayName: 'Use Python 3.x'
+  - bash: |
+     python -m pip install --upgrade pip setuptools setuptools_scm[toml]  importlib_metadata build twine
+     python -m build
+    displayName: 'Build dist packages'
+  - task: TwineAuthenticate@1
+    displayName: 'Twine Authenticate (testpypi)'
+    inputs:
+      pythonUploadServiceConnection: 'testpypi_zipfile_inflate64'
+    condition: startsWith(variables['build.sourceBranch'], 'refs/heads/releases')
+  - bash: |
+     python -m twine upload  --repository testpypi --config-file $(PYPIRC_PATH) dist/*
+    displayName: 'Upload to Python Package Index(test)'
+    condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/heads/releases'))
+  - task: TwineAuthenticate@1
+    displayName: 'Twine Authenticate (pypi)'
+    inputs:
+      pythonUploadServiceConnection: 'pypi_zipfile_inflate64'
+    condition: startsWith(variables['build.sourceBranch'], 'refs/tags/v')
+  - bash: |
+     python -m twine upload  --repository pypi --config-file $(PYPIRC_PATH)  dist/*
+    displayName: 'Upload to Python Package Index'
+    condition: and(succeeded(), startsWith(variables['build.sourceBranch'], 'refs/tags/v'))

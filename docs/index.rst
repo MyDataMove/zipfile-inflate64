@@ -10,6 +10,7 @@ Welcome to zipfile-inflate64's documentation!
 .. toctree::
    :maxdepth: 2
 
+   howtouse
    changes
 
 
