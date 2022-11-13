@@ -50,5 +50,11 @@ zipfile-inflate64 is a fork that use inflate64 python package to realize compres
 
 ## Copyright
 
-zipfile-deflate64 is authored by Kitware, Inc.
-zipfile-inflate64 is authored by Hiroshi Miura.
+- zipfile-deflate64 is authored by Kitware, Inc.
+- zipfile-inflate64 is authored by Hiroshi Miura.
+
+## LICENSE
+
+zipfile-inflate64 is distributed under GNU General Public License Version 3.0 or (in your choice) later.
+
+zipfile-deflate64 is distributed under Apache-2.0 license.
