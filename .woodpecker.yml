@@ -1,0 +1,40 @@
+when:
+  event: pull_request
+  branch: [main, releases/*]
+
+clone:
+  git:
+    image: woodpeckerci/plugin-git
+    settings:
+      partial: false
+      depth: 1
+      lfs: false
+      tags: true
+
+steps:
+  standardize:
+    image: python:3.9-buster
+    when:
+      event: pull_request
+      branch: [main, releases/*]
+    commands:
+      - python -m pip install --upgrade pip setuptools setuptools_scm[toml] tox importlib_metadata
+      - python -m tox -e check
+      - python -m tox -e type
+
+  build:
+    image: python:${TAG}-buster
+    when:
+      event: pull_request
+      branch: [main, releases/*]
+    commands:
+      - python -m pip install --upgrade pip setuptools setuptools_scm[toml] tox importlib_metadata
+      - python -m tox -e test
+
+matrix:
+  TAG:
+    - 3.7
+    - 3.8
+    - 3.9
+    - 3.10
+    - 3.11
