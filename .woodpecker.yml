@@ -13,7 +13,7 @@ clone:
 
 steps:
   standardize:
-    image: python:${TAG}-buster
+    image: python:${TAG}-bullseye
     when:
       - matrix:
           TAG: 3.9
@@ -24,7 +24,7 @@ steps:
       - python -m tox -e type
 
   build:
-    image: python:${TAG}-buster
+    image: python:${TAG}-bullseye
     commands:
       - python -m venv venv
       - /bin/bash -c "source venv/bin/activate"
