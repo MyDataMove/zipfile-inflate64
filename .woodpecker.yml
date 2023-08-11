@@ -13,21 +13,21 @@ clone:
 
 steps:
   standardize:
-    image: python:3.9-buster
+    image: python:${TAG}-buster
     when:
-      event: pull_request
-      branch: [main, releases/*]
+      - matrix:
+          TAG: 3.9
     commands:
+      - python -m venv venv
       - python -m pip install --upgrade pip setuptools setuptools_scm[toml] tox importlib_metadata
       - python -m tox -e check
       - python -m tox -e type
 
   build:
     image: python:${TAG}-buster
-    when:
-      event: pull_request
-      branch: [main, releases/*]
     commands:
+      - python -m venv venv
+      - /bin/bash -c "source venv/bin/activate"
       - python -m pip install --upgrade pip setuptools setuptools_scm[toml] tox importlib_metadata
       - python -m tox -e test
 
