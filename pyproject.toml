@@ -41,7 +41,7 @@ classifiers = [
     "Topic :: System :: Archiving :: Compression",
  ]
 dependencies = [
-      'inflate64>=0.3.1;python_version>"3.6"',
+    'inflate64>=1.0.0',
 ]
 keywords= ['zip', 'zipfile', 'deflate', 'deflate64', 'inflate64']
 dynamic = ["version"]
