@@ -1,6 +1,7 @@
 when:
-  event: pull_request
-  branch: [main, releases/*]
+  - event: push
+    branch: [main, releases/*]
+  - event: pull_request
 
 clone:
   git:
@@ -29,7 +30,7 @@ steps:
       - python -m venv venv
       - /bin/bash -c "source venv/bin/activate"
       - python -m pip install --upgrade pip setuptools setuptools_scm[toml] tox importlib_metadata
-      - python -m tox -e test
+      - python -m tox
 
 matrix:
   TAG:
@@ -37,3 +38,4 @@ matrix:
     - 3.9
     - 3.10
     - 3.11
+    - 3.12
