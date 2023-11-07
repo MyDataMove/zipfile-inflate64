@@ -12,7 +12,7 @@ tag_regex = "^(?P<prefix>v)?(?P<version>[^\\+]+)(?P<suffix>.*)?$"
 
 [project]
 name = "zipfile-inflate64"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 description = "Extract Enhanced Deflate ZIP archives with Python's zipfile API."
 readme = "README.rst"
 license = {text = "GPL-3.0-or-later"}
