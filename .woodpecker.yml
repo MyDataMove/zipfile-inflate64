@@ -20,7 +20,7 @@ steps:
           TAG: 3.9
     commands:
       - python -m venv venv
-      - python -m pip install --upgrade pip setuptools setuptools_scm[toml] tox importlib_metadata
+      - python -m pip install --upgrade pip setuptools setuptools_scm[toml] tox
       - python -m tox -e check
       - python -m tox -e type
 
@@ -29,8 +29,8 @@ steps:
     commands:
       - python -m venv venv
       - /bin/bash -c "source venv/bin/activate"
-      - python -m pip install --upgrade pip setuptools setuptools_scm[toml] tox importlib_metadata
-      - python -m tox
+      - python -m pip install --upgrade pip setuptools setuptools_scm[toml] tox
+      - python -m tox -e test -vv
 
 matrix:
   TAG:

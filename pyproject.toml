@@ -58,6 +58,9 @@ Source = "https://codeberg.org/miurahr/zipfile-inflate64"
 Changelog = "https://zipfile-inflate64.readthedocs.io/en/latest/changelog.html"
 
 [project.optional-dependencies]
+test = [
+      "pytest"
+]
 docs = [
       "sphinx>=5.0",
       "docutils",
@@ -103,8 +106,8 @@ isolated_build = true
 envlist =
     check,
     type,
-    test,
     docs,
+    py{38,39,310,311,312}
 
 [testenv:check]
 extras = check
@@ -133,9 +136,8 @@ commands =
     isort {posargs:.}
     black {posargs:.}
 
-[testenv:test]
-deps =
-    pytest
+[testenv]
+extras = test
 commands =
     pytest {posargs}
 
