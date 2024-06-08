@@ -19,11 +19,11 @@ def deflate64_check_compression(compression: int) -> None:
 
 
 @patch(zipfile, '_get_compressor')
-def deflate64_get_compressor(compress_type: int):
+def deflate64_get_compressor(compress_type: int, compresslevel=None):
     if compress_type == zipfile.ZIP_DEFLATED64:  # type: ignore[attr-defined]
         return _inflate64.Compressor()
     else:
-        return patch.originals['_get_compressor'](compress_type)
+        return patch.originals['_get_compressor'](compress_type, compresslevel)
 
 
 @patch(zipfile, '_get_decompressor')
