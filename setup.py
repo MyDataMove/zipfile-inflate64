@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='zipfile-inflate64',
-    version='0.7.0',
+    version='0.8.0',
     packages=setuptools.find_packages(),
     description='Patch ZipFile to support inflate64 compression',
     url='https://github.com/MyDataMove/zipfile-inflate64',
