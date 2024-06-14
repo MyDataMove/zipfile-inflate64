@@ -9,4 +9,7 @@ setuptools.setup(
     license='Apache License, Version 2.0',
     setup_requires=[
     ],
+    dependencies=[
+        'inflate64>=0.3.1;python_version>"3.6"'
+    ],
 )

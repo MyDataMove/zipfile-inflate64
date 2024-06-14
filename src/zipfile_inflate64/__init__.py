@@ -21,7 +21,7 @@ from zipfile import (
 
 from zipfile import ZIP_DEFLATED64  # type: ignore[attr-defined]  # noqa: F401
 
-from zipfile_inflate64.version import __version__
+#from zipfile_inflate64.version import __version__
 
 __copyright__ = 'Copyright (C) 2022 Hiroshi Miura'
 
@@ -40,6 +40,6 @@ __all__ = [
     'PyZipFile',
     'LargeZipFile',
     'Path',
-    '__version__',
+    #'__version__',
     '__copyright__',
 ]
